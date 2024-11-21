@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './Components/Navbar';
+import Home from './Pages/Home';
+// import JobPosting from './Pages/Jobposting';
+import Chats from './Pages/Chats';
+// import Community from './Pages/Community';
+import JobsAvailable from './Pages/JobsAvailable';
+import { ThemeProvider } from "./Context/Themecontext"; // Import ThemeProvider
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider> {/* Wrap the entire app with ThemeProvider */}
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          {/* <Route path="/jobposting" element={<JobPosting />} /> */}
+          <Route path="/chats" element={<Chats />} />
+          {/* <Route path="/community" element={<Community />} /> */}
+          <Route path="/jobs-available" element={<JobsAvailable />} />
+        </Routes>
+      </Router>
+    </ThemeProvider>
   );
 }
 
